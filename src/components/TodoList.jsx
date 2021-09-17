@@ -7,20 +7,28 @@ function TodoList() {
     const [todos, setTodos] = useState([])
 
     //Agregar una tarea
-    const addTodo = todo =>{
-        
-        if(!todo.text || /^\s*$/.test(todo.text)){
+    const addTodo = todo => {
+        if (!todo.text || /^\s*$/.test(todo.text)) {
             return
         }
         //Cuando hago click agrego la tarea
-      const newTodos = [todo, ...todos]
-      setTodos(newTodos)
+        const newTodos = [todo, ...todos]
+        setTodos(newTodos)
 
-      console.log(todo, ...todos)
+        console.log(todo, ...todos)
+
+        // let obj ={
+            
+        //     todos: todos
+        // }
+
+
+        // localStorage.setItem("stored", JSON.stringify(obj));
+
     }
 
-    const updateTodo = (todoId, newValue) =>{
-        if(!newValue.text || /^\s*$/.test(newValue.text)){
+    const updateTodo = (todoId, newValue) => {
+        if (!newValue.text || /^\s*$/.test(newValue.text)) {
             return
         }
 
@@ -29,16 +37,16 @@ function TodoList() {
     }
 
 
-    const removeTodo = id =>{
+    const removeTodo = id => {
         const removeArr = [...todos].filter(todo => todo.id !== id)
         setTodos(removeArr)
     }
 
 
 
-    const completeTodo = id =>{
+    const completeTodo = id => {
         let updateTodos = todos.map(todo => {
-            if(todo.id === id){
+            if (todo.id === id) {
                 todo.isComplete = !todo.isComplete
             }
             return todo
@@ -51,16 +59,12 @@ function TodoList() {
 
 
 
- 
-
-
-
 
     return (
         <div>
             <h1>¿Qué tenes planeado para hoy?</h1>
             <TodoForm onSubmit={addTodo} />
-            <Todo  todos={todos} completeTodo={completeTodo} removeTodo={removeTodo} updateTodo={updateTodo} />
+            <Todo todos={todos} completeTodo={completeTodo} removeTodo={removeTodo} updateTodo={updateTodo} />
         </div>
     )
 }

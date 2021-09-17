@@ -4,6 +4,7 @@ function TodoForm(props) {
     //Traigo el input del form
     const [input, setInput] = useState(props.edit ? props.edit.value : '');
 
+    //El campo del imput esta siempre en foco
     const inputRef = useRef(null)
     useEffect(() => {
         inputRef.current.focus();
@@ -22,7 +23,10 @@ function TodoForm(props) {
             id: Math.floor(Math.random() * 10000),
             text: input
         })
-        setInput('')
+        setInput('')    
+        
+        
+
     }
 
     return (
@@ -34,7 +38,7 @@ function TodoForm(props) {
                         placeholder='Modificar actividad'
                         value={input}
                         name='text'
-                        className='input'
+                        className='todo-input'
                         onChange={handleChange}
                         ref={inputRef} />
                     <button className='todo-button'>Actualizar</button>
@@ -46,7 +50,7 @@ function TodoForm(props) {
                             placeholder='Ingrese actividad'
                             value={input}
                             name='text'
-                            className='input'
+                            className='todo-input'
                             onChange={handleChange}
                             ref={inputRef} />
                         <button className='todo-button'>Agregar una actividad</button> 
